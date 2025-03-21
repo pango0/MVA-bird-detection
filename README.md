@@ -1,14 +1,14 @@
-## Create environment
+## <div align="center">Environment Setup</div>
 ```
 conda env create -f environment.yml
 conda activate MVA
 ```
 
-## To inference a single image
+## <div align="center">Inference a single image</div>
 ```
 python sahi_detect.py --image_path <path/to/image>
 ```
-## Sample Result
+## <div align="center">Sample Results</div>
 
 ![Sample 00007](sample_image/00007.jpg)
 ![Sample 00007](sample_image/00007.png)
@@ -18,8 +18,8 @@ python sahi_detect.py --image_path <path/to/image>
 ![Sample 00182](sample_image/00182.png)
 
 ---
-### Citation
-```
+### <div align="center">Citation</div>
+```bibtex
 @article{akyon2022sahi,
   title={Slicing Aided Hyper Inference and Fine-tuning for Small Object Detection},
   author={Akyon, Fatih Cagatay and Altinuc, Sinan Onur and Temizel, Alptekin},
@@ -29,7 +29,7 @@ python sahi_detect.py --image_path <path/to/image>
   year={2022}
 }
 ```
-```
+```bibtex
 @software{obss2021sahi,
   author       = {Akyon, Fatih Cagatay and Cengiz, Cemil and Altinuc, Sinan Onur and Cavusoglu, Devrim and Sahin, Kadir and Eryuksel, Ogulcan},
   title        = {{SAHI: A lightweight vision library for performing large scale object detection and instance segmentation}},
