@@ -54,9 +54,9 @@ def run_sahi(image_path):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Bird detection")
+    parser.add_argument("--image_path", help="Path to the input image")
     args = parser.parse_args()
     # Add the arguments
-    parser.add_argument("--image_path", help="Path to the input image")
     run_sahi(args.image_path)
 
 
