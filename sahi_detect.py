@@ -2,6 +2,8 @@ from sahi import AutoDetectionModel
 from sahi.predict import get_sliced_prediction, predict, get_prediction
 from PIL import Image, ImageDraw
 import os
+import argparse
+
 model_path = "facebook/detr-resnet-101-dc5"
 detection_model = AutoDetectionModel.from_pretrained(
     model_type='huggingface',
@@ -51,7 +53,11 @@ def run_sahi(image_path):
     
 
 if __name__ == '__main__':
-   run_sahi("00182.jpg")
+    parser = argparse.ArgumentParser(description="Bird detection")
+    args = parser.parse_args()
+    # Add the arguments
+    parser.add_argument("--image_path", help="Path to the input image")
+    run_sahi(args.image_path)
 
 
 
