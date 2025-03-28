@@ -8,7 +8,7 @@ import argparse
 from PIL import Image
 import glob
 
-from utils import get_image_resolution, get_slice, get_available_gpus, get_dir_resolution, draw_bounding_boxes
+from tools import get_image_resolution, get_slice, get_available_gpus, get_dir_resolution, draw_bounding_boxes
 
 def get_model(model_path="facebook/detr-resnet-101-dc5"):
     detection_model = AutoDetectionModel.from_pretrained(
@@ -136,7 +136,3 @@ if __name__ == '__main__':
         run_all(args.image_path, args.workers_per_gpu)
     if args.action=="single":
         run_sahi(args.image_path, model)
-
-
-
-

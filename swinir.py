@@ -28,9 +28,10 @@ def main():
     parser.add_argument('--folder_gt', type=str, default=None, help='input ground-truth test image folder')
     parser.add_argument('--tile', type=int, default=None, help='Tile size, None for no tile during testing (testing as a whole)')
     parser.add_argument('--tile_overlap', type=int, default=32, help='Overlapping of different tiles')
+    parser.add_argument('--gpu_id', type=int, default=0, help='Specify the GPU ID to use')
     args = parser.parse_args()
 
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    device = torch.device(f'cuda:{args.gpu_id}' if torch.cuda.is_available() else 'cpu')
     # set up model
     if os.path.exists(args.model_path):
         print(f'loading model from {args.model_path}')
