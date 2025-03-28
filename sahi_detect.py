@@ -133,6 +133,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
     model = get_model()
     if args.action=="all":
-        run_all(args.image_path, args.workers_per_gpu)
+        run_all(args.path, args.workers_per_gpu)
     if args.action=="single":
-        run_sahi(args.image_path, model)
+        run_sahi(args.path, model)
