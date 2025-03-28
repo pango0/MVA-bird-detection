@@ -18,15 +18,15 @@ python sahi_detect.py --image_path pub_test --action all
 ```
 Results stored in `runs/predict`
 ## <div align="center">SAHI Sample Results</div>
-
+No SAHI
 ![Sample 00007](sample_image/00007.jpg)
-![Sample 00007](sample_image/00007.png)
-
 ![Sample 00039](sample_image/00039.jpg)
-![Sample 00039](sample_image/00039.png)
-
 ![Sample 00182](sample_image/00182.jpg)
+With SAHI
+![Sample 00007](sample_image/00007.png)
+![Sample 00039](sample_image/00039.png)
 ![Sample 00182](sample_image/00182.png)
+
 
 ---
 ### <div align="center">Citation</div>
