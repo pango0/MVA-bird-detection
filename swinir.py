@@ -202,7 +202,8 @@ def setup(args):
 
     # 003 real-world image sr
     elif args.task in ['real_sr']:
-        save_dir = f'results/swinir_{args.task}_x{args.scale}'
+        p = args.folder_lq.split('/')[-1] # 0001
+        save_dir = f'swin_results/{p}'
         if args.large_model:
             save_dir += '_large'
         folder = args.folder_lq
