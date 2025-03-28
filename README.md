@@ -3,12 +3,21 @@
 conda env create -f environment.yml
 conda activate MVA
 ```
+## <div align="center">Directory upscaling with SwinIR</div>
+```
+python swinir.py --task real_sr --model_path swin_models/003_realSR_BSRGAN_DFO_s64w8_SwinIR-M_x4_GAN.pth --folder_lq <path/to/image/dir> --scale 4 --tile 400
+```
+Results stored in `swin_results/`
+## <div align="center">Inference a single image with SAHI</div>
+```
+python sahi_detect.py --image_path pub_test --action all
 
-## <div align="center">Inference a single image</div>
+--path (required)	Path to the input image (for single inference) or dataset folder (for batch processing, e.g., pub_test).
+--action (required)	Specifies the type of inference. Defaults to "all". Options: "all" (batch inference pub_test), "single" (process one image).
+--workers_per_gpu (optional)	Number of workers per GPU for batch processing. Defaults to 4.
 ```
-python sahi_detect.py --image_path <path/to/image>
-```
-## <div align="center">Sample Results</div>
+Results stored in `runs/predict`
+## <div align="center">SAHI Sample Results</div>
 
 ![Sample 00007](sample_image/00007.jpg)
 ![Sample 00007](sample_image/00007.png)
