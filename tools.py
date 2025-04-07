@@ -2,6 +2,7 @@ from PIL import Image, ImageDraw
 import os
 import torch
 import json
+import pickle
 
 def get_available_gpus():
     return [f'cuda:{i}' for i in range(torch.cuda.device_count())]
@@ -51,7 +52,6 @@ def get_slice(w, h):
     print(f'Tile size: {slice}*{slice}')
     return slice
 
-
 def draw_bounding_boxes(image, coordinates, label_name, output_path):
     """
     downscale and draw bbox
@@ -75,8 +75,38 @@ def get_dir_dimensions(directory):
         print(f'{dir}: ')
         w, h = get_dir_resolution(dir)
         data = {"width":w, "height": h}
+        os.makedirs(f"phase_2/predict/{d}", exist_ok=True)
         json_path = f"phase_2/predict/{d}/image.json"
         with open(json_path, 'w') as json_file:
             json.dump(data, json_file, indent=4) 
 
-get_dir_dimensions("swin_results")
+def convert_pickles_to_txt(exp_n):
+    pickles_dir = f"runs/predict/exp{exp_n}/pickles"
+    annotation_dir = f"runs/predict/exp{exp_n}/annotation"
+
+    # Ensure annotation directory exists
+    os.makedirs(annotation_dir, exist_ok=True)
+
+    # Iterate over pickle files
+    for filename in sorted(os.listdir(pickles_dir)):
+        if filename.endswith(".pickle"):
+            pickle_path = os.path.join(pickles_dir, filename)
+            txt_filename = filename.replace(".pickle", ".txt")
+            txt_path = os.path.join(annotation_dir, txt_filename)
+
+            # Read pickle file
+            with open(pickle_path, "rb") as f:
+                data = pickle.load(f)
+
+            
+            # Convert data to string and save as text
+            with open(txt_path, "w") as f:
+                for obj in data:
+                    if obj.category.name == 'bird':
+                        bbox = obj.bbox
+                        score = obj.score.value  # Assuming score has a 'value' attribute
+                        f.write(f"{bbox.minx}, {bbox.miny}, {bbox.maxx}, {bbox.maxy}, {score}\n")
+
+            print(f"Converted {filename} to {txt_filename}")
+
+# get_dir_dimensions("swin_results")

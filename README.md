@@ -17,6 +17,25 @@ python sahi_detect.py --image_path pub_test --action all
 --workers_per_gpu (optional)	Number of workers per GPU for batch processing. Defaults to 4.
 ```
 Results stored in `runs/predict`
+## <div align="center">Directory batch SAHI prediction</div>
+If image is in `swin_results/0010`
+```
+# python
+from sahi_detect import run_batch_sahi
+
+run_batch_sahi(f'swin_results/0010', 0)
+```
+Results stored in `runs/predict/exp{n}`
+## <div align="center">Convert batch SAHI result to txt</div>
+Convert pickle to txt, if sahi results are in `runs/predict/exp7`, results are stored in `runs/predict/exp7/annotation/`
+```
+# python
+from tools import convert_pickles_to_txt
+
+convert_pickles_to_txt(7)
+
+```
+
 ## <div align="center">SAHI Sample Results</div>
 No SAHI
 ![Sample 00007](sample_image/00007.jpg)
